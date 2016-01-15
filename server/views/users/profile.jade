@@ -42,11 +42,11 @@ block main-content
                 tr
                     th Title
                     th Date
-                each event in ownEvents
+                each playlist in ownplaylists
                     tr
                         td
-                            a(href="/events/#{event._id}") #{event.title}
-                        td #{moment(event.date).format("MMM-DD-YYYY HH:mm:ss")}
+                            a(href="/playlists/#{playlist._id}") #{playlist.title}
+                        td #{moment(playlist.date).format("MMM-DD-YYYY HH:mm:ss")}
                         
     .row
         .text-center
@@ -54,6 +54,6 @@ block main-content
         .col-md-offset-2.col-md-8
             table.table.table-striped.table-bordered
                 ul
-                each event in JSON.parse(joinedEvents)
+                each playlist in JSON.parse(joinedplaylists)
                     li
-                        a(href="/events/#{event}") #{event}
+                        a(href="/playlists/#{playlist}") #{playlist}

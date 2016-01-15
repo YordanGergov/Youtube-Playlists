@@ -12,16 +12,16 @@ block main-content
                     th Type
                     th Created By
                     th Rating
-                each event in events
+                each playlist in playlists
                     tr
                         td
-                            a(href="/events/#{event._id}") #{event.title}
-                        td #{event.category}
-                        td #{moment(event.date).format("MMM-DD-YYYY HH:mm:ss")}
-                        td #{ event.type}
-                        td #{event.owner.firstName + ' ' + event.owner.lastName}
+                            a(href="/playlists/#{playlist._id}") #{playlist.title}
+                        td #{playlist.category}
+                        td #{moment(playlist.date).format("MMM-DD-YYYY HH:mm:ss")}
+                        td #{ playlist.type}
+                        td #{playlist.owner.firstName + ' ' + playlist.owner.lastName}
                         script. var rating = Math.floor((Math.random() * 5) + 1);
-                        td #{event.rating}
+                        td #{playlist.rating}
 
 
 block page-scripts

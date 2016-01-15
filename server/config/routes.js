@@ -13,14 +13,14 @@ module.exports = function(app) {
     app.post('/login', auth.login);
     app.get('/logout', auth.isAuthenticated, auth.logout);
 
-    // Events
-    app.get('/events/:id', auth.isAuthenticated, controllers.events.getDetail);
-    app.post('/events/join/:id', auth.isAuthenticated, controllers.events.join);
-    app.post('/events/leave/:id', auth.isAuthenticated, controllers.events.leave);
-    app.get('/create', auth.isAuthenticated, controllers.events.getCreate);
-    app.post('/create', auth.isAuthenticated, controllers.events.postCreate);
-    app.get('/active-events', auth.isAuthenticated, controllers.events.getActive);
-    app.get('/passed-events', auth.isAuthenticated, controllers.events.getPassed);
+    // playlists
+    app.get('/playlists/:id', auth.isAuthenticated, controllers.playlists.getDetail);
+    app.post('/playlists/join/:id', auth.isAuthenticated, controllers.playlists.join);
+    app.post('/playlists/leave/:id', auth.isAuthenticated, controllers.playlists.leave);
+    app.get('/create', auth.isAuthenticated, controllers.playlists.getCreate);
+    app.post('/create', auth.isAuthenticated, controllers.playlists.postCreate);
+    app.get('/active-playlists', auth.isAuthenticated, controllers.playlists.getActive);
+    app.get('/passed-playlists', auth.isAuthenticated, controllers.playlists.getPassed);
 
     app.get('/', controllers.stats.getStats);
 
