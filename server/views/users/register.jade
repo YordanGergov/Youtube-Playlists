@@ -39,12 +39,20 @@ block main-content
                                 span.input-group-addon
                                 input(id="email" class="form-control" type="text" name="email")
                         .form-group
-                            label(for="initiatives") Initiatives
+                            label(for="imageUrl") ImageUrl (optional)
+                                .input-group
+                                    span.input-group-addon
+                                    input(id="imageUrl" class="form-control" type="text" name="imageUrl" value="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQiWGXo4U6CCvNItlDYFgEQz4d3T-YjLj13nqUZ-crpAr3qMPx-")
+                        .form-group
+                            label(for="facebookUrl") FacebookUrl (optional)
                             .input-group
                                 span.input-group-addon
-                                select(multiple id="initiatives" class="form-control" name="initiatives")
-                                    each initiative, i in JSON.parse(initiatives).all
-                                        option(value="#{i}") #{initiative.name + ', ' + initiative.season}
+                                input(id="facebookUrl" class="form-control" type="text" name="facebookUrl")
+                        .form-group
+                            label(for="youtubeUrl") YoutubeUrl (optional)
+                            .input-group
+                                span.input-group-addon
+                                input(id="youtubeUrl" class="form-control" type="text" name="youtubeUrl")
                         .row
                             .col-md-12
                                 input(type="submit" class="btn btn-primary btn-block btn-md" value="Register")

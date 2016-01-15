@@ -6,32 +6,37 @@ block main-content
         .col-md-offset-3.col-md-6
             form.form-horizontal(role="form" method="post")
               .form-group
-                label.col-sm-2.control-label(for="imageUrl") Photo
+                label.col-sm-2.control-label(for="firstName") First Name
+                .col-sm-10
+                  input.form-control(type="text" name="firstName" placeholder="#{user.firstName || 'First name'}")
+              .form-group
+                label.col-sm-2.control-label(for="lastName") Last Name
+                .col-sm-10
+                   input.form-control(type="text" name="lastName" placeholder="#{user.lastName || 'Last name'}")
+              .form-group
+                label.col-sm-2.control-label(for="email") Email
+                .col-sm-10
+                   input.form-control(type="text" name="email" placeholder="#{user.email || 'Email'}")
+              .form-group
+                label.col-sm-2.control-label(for="imageUrl") Image
                 .col-sm-10
                   input.form-control(type="text" name="imageUrl" placeholder="#{user.imageUrl || 'Profile image url'}")
-              .form-group
-                label.col-sm-2.control-label(for="description") Phone
                 .col-sm-10
-                  input.form-control(type="text" name="phone" placeholder="#{user.phone || 'Phone'}")              
               .form-group
                 label.col-sm-2.control-label(for="facebookUrl") Facebook
                 .col-sm-10
                   input.form-control(type="text" name="facebookUrl" placeholder="#{user.facebookUrl || 'Facebook url'}")
               .form-group
-                label.col-sm-2.control-label(for="description") Google+
-                .col-sm-10
-                  input.form-control(type="text" name="googleUrl" placeholder="#{user.googleUrl || 'Google+ url'}")
-              .form-group
-                label.col-sm-2.control-label(for="linkedinUrl") LinkedIn
-                .col-sm-10
-                  input.form-control(type="text" name="linkedInUrl" placeholder="#{user.linkedInUrl || 'LinkedIn url'}")
+                 label.col-sm-2.control-label(for="youtubeUrl") Youtube
+                 .col-sm-10
+                   input.form-control(type="text" name="youtubeUrl" placeholder="#{user.youtubeUrl || 'Youtube url'}")
               .form-group
                 .col-sm-offset-2.col-sm-10
                     input(type="submit" value="Update Profile" class="btn btn-primary")
                 
     .row
         .text-center
-            h2 Own Events
+            h2 Own Playlists
         .col-md-offset-2.col-md-8
             table.table.table-striped.table-bordered
                 tr
@@ -45,7 +50,7 @@ block main-content
                         
     .row
         .text-center
-            h2 Joined Events
+            h2 Rated Playlists
         .col-md-offset-2.col-md-8
             table.table.table-striped.table-bordered
                 ul

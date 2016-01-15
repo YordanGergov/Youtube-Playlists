@@ -5,7 +5,7 @@ var moment = require('moment');
 
 var events = require('../data/events');
 
-var initiatives = require('../data/initiatives');
+var initiatives = require('../data/category');
 
 var CONTROLLER_NAME = 'users';
 var CONSTANTS = {	
@@ -112,11 +112,13 @@ module.exports = {
         var user = req.user;
         
         var update = {
+            firstName: newUserData.firstName || user.firstName,
+            lastName: newUserData.lastName || user.lastName,
+            email: newUserData.email || user.email,
             imageUrl: newUserData.imageUrl || user.imageUrl,
-            phone: newUserData.phone || user.phone,
             facebookUrl: newUserData.facebookUrl || user.facebookUrl,
-            googleUrl: newUserData.googleUrl || user.googleUrl,
-            linkedInUrl: newUserData.linkedInUrl || user.linkedInUrl            
+            youtubeUrl: newUserData.youtubeUrl || user.youtubeUrl
+
         };
         
         users.update(req.user, update, function (err) {

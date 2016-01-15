@@ -2,14 +2,16 @@ extends ../shared/layout
 block main-content
     .row
         .text-center
-            h2 Passed Events
-        .col-md-offset-2.col-md-8
+            h2 Youtube Playlists
+        .col-md-12
             table.table.table-striped.table-bordered
                 tr
                     th Title
                     th Category
                     th Date
+                    th Type
                     th Created By
+                    th Rating
                     th Joined
                 each event in events
                     tr
@@ -17,6 +19,15 @@ block main-content
                             a(href="/events/#{event._id}") #{event.title}
                         td #{event.category}
                         td #{moment(event.date).format("MMM-DD-YYYY HH:mm:ss")}
+                        td #{ event.type}
                         td #{event.owner.firstName + ' ' + event.owner.lastName}
+                        td
+                            if (event.joined)
+                                a.update(href="/events/leave/#{event._id}") Non-Rated by you
+                            else
+                                a.update(href="/events/join/#{event._id}") Rated by you
                         td #{event.joined ? 'Yes' : 'No'}
+
+block page-scripts
+    script(src="js/sendRequest.js")
 

@@ -2,7 +2,7 @@ var encryption = require('../utilities/encryption');
 var events = require('../data/events');
 var users = require('../data/users');
 var moment = require('moment');
-var initiatives = require('../data/initiatives');
+var initiatives = require('../data/category');
 
 var CONTROLLER_NAME = 'events';
 var URL_PASSWORD = 'magic unicorns pesho gosho1';
@@ -47,7 +47,7 @@ module.exports = {
         }
         
         newEventForm.owner = req.user._id;
-        newEventForm.date = newEventForm.date || new Date();
+        newEventForm.date = new Date();
     
         events.create(newEventForm, function(err, user) {
             if (err) {
@@ -100,18 +100,18 @@ module.exports = {
         events.findOne({_id: req.params.id}, function(err, event) {
 
             if (!event) {
-                req.session.error = 'Event does not exist!';
-                return res.status(400).send({ message: 'Event does not exist!'});
+                req.session.error = 'Playlist does not exist!';
+                return res.status(400).send({ message: 'Playlist does not exist!'});
             }            
     
             if (event.owner.equals(req.user)) {
-                req.session.error = 'You cannot join your own event!';
-                return res.status(400).send({ message: 'You cannot join your own event!'});
+                req.session.error = 'You already rated this playlist!';
+                return res.status(400).send({ message: 'You already rated this playlist!'});
             }
             
             if (req.user.joinedEvents.indexOf(event._id) >= 0) {
-                req.session.error = 'You already joined this event!';
-                return res.status(400).send({ message: 'You already joined this event!'});
+                req.session.error = 'You already rated this playlist!';
+                return res.status(400).send({ message: 'You already rated this playlist!'});
             }
             
             // ['public', 'initiative-based', 'initiative-and-season-based']
@@ -128,7 +128,7 @@ module.exports = {
             req.user.joinedEvents.push(event._id);
             users.update(req.user, {joinedEvents: req.user.joinedEvents}, function (err) {
                 if (err) throw err;
-                res.send('Event joined!');    
+                res.send('Playlist rated!');
             });            
         });
     },
