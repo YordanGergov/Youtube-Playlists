@@ -2,7 +2,7 @@ var mongoose = require('mongoose');
 
 module.exports.init = function() {
     
-    var playlistSchema = mongoose.Schema({
+    var eventSchema = mongoose.Schema({
         title: { type: String, require: '{PATH} is required'},
         description: { type: String, require: '{PATH} is required'},
         videoUrl: String,
@@ -20,5 +20,5 @@ module.exports.init = function() {
         }
     });
 
-    var playlist = mongoose.model('playlist', playlistSchema);
+    var Event = mongoose.model('Event', eventSchema);
 };

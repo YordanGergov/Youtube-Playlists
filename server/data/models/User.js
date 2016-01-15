@@ -18,7 +18,7 @@ module.exports.init = function() {
         rating: Number,
         salt: String,
         hashPass: String,
-        joinedplaylists: [
+        joinedEvents: [ 
             { type: mongoose.Schema.Types.ObjectId, ref: 'User' }
         ]
     });

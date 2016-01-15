@@ -1,10 +1,10 @@
-var playlists = require('../data/playlists');
+var events = require('../data/events');
 
 function getStats(req, res, next) {
     var today = new Date();
-    playlists.count({date: { $lt: today }}, function (err, totalplaylists) {
+    events.count({date: { $lt: today }}, function (err, totalEvents) {
         if (err) throw err;        
-        res.render('index', {passedplaylists: totalplaylists });
+        res.render('index', {passedEvents: totalEvents });
     });
 } 
 

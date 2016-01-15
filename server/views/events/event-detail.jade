@@ -16,15 +16,15 @@ block main-content
                     th Rated
                     th VideoUrls
                 tr
-                    td #{playlist.title}
-                    td.truncate #{playlist.description}
-                    td #{playlist.category}
-                    td #{playlist.type}
-                    td #{moment(playlist.date).format("MMM-DD-YYYY HH:mm:ss")}
-                    td #{playlist.owner.firstName + ' ' + playlist.owner.lastName}
-                    td #{playlist.comments}
-                    td #{playlist.joined ? 'Yes' : 'No'}
-                    td.truncate #{playlist.videoUrl}
+                    td #{event.title}
+                    td.truncate #{event.description}
+                    td #{event.category}
+                    td #{event.type}
+                    td #{moment(event.date).format("MMM-DD-YYYY HH:mm:ss")}
+                    td #{event.owner.firstName + ' ' + event.owner.lastName}
+                    td #{event.comments}
+                    td #{event.joined ? 'Yes' : 'No'}
+                    td.truncate #{event.videoUrl}
 
 
 

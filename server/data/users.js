@@ -15,7 +15,7 @@ module.exports = {
     },
     findOne: function(criteria, callback) {        
         User.findOne(criteria)
-            //.populate({ path: 'joinedplaylists' })
+            //.populate({ path: 'joinedEvents' })
             .exec(callback); 
     }
 };

@@ -1,9 +1,9 @@
 var UsersController = require('./UsersController'),
-    playlistsController = require('./playlistsController');
+    EventsController = require('./EventsController');
 var StatsController = require('./StatsController');
 
 module.exports = {
     users: UsersController,
-    playlists: playlistsController,
+    events: EventsController,
     stats: StatsController
 };

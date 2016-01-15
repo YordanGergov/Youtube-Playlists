@@ -3,7 +3,7 @@ var encryption = require('../utilities/encryption'),
 
 var moment = require('moment');
 
-var playlists = require('../data/playlists');
+var events = require('../data/events');
 
 var initiatives = require('../data/category');
 
@@ -46,7 +46,7 @@ module.exports = {
       //  })
         
         newUserData.initiatives = userInitiatives;
-        newUserData.joinedplaylists = [];
+        newUserData.joinedEvents = [];
         newUserData.rating = Math.floor((Math.random() * 5) + 1);
         
         console.log(userInitiatives)
@@ -91,16 +91,16 @@ module.exports = {
     },
     getProfile: function(req, res, next) {
         // function(criteria, sortBy, callback)
-        playlists.find({owner: req.user._id}, {'date' : 'desc'}, function (err, ownplaylists) {
+        events.find({owner: req.user._id}, {'date' : 'desc'}, function (err, ownEvents) {
             
             users.findOne({_id: req.user._id}, function (err, user) {
                 
-                var joinedplaylists = user.joinedplaylists;
+                var joinedEvents = user.joinedEvents;
 
                 res.render(CONTROLLER_NAME + '/profile', {
                     user: req.user,
-                    ownplaylists: ownplaylists,
-                    joinedplaylists: JSON.stringify(joinedplaylists),
+                    ownEvents: ownEvents,
+                    joinedEvents: JSON.stringify(joinedEvents),
                     moment: moment
                 });
             });
