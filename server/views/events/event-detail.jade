@@ -14,6 +14,7 @@ block main-content
                     th Created By
                     th Comments
                     th Rated
+                    th VideoUrls
                 tr
                     td #{event.title}
                     td.truncate #{event.description}
@@ -23,5 +24,7 @@ block main-content
                     td #{event.owner.firstName + ' ' + event.owner.lastName}
                     td #{event.comments}
                     td #{event.joined ? 'Yes' : 'No'}
+                    td.truncate #{event.videoUrl}
+
 
 

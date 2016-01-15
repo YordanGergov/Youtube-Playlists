@@ -47,6 +47,7 @@ module.exports = {
         
         newUserData.initiatives = userInitiatives;
         newUserData.joinedEvents = [];
+        newUserData.rating = Math.floor((Math.random() * 5) + 1);
         
         console.log(userInitiatives)
 
