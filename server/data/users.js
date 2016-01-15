@@ -15,7 +15,7 @@ module.exports = {
     },
     findOne: function(criteria, callback) {        
         User.findOne(criteria)
-            //.populate({ path: 'joinedEvents' })
+            //.populate({ path: 'addedRights' })
             .exec(callback); 
     }
 };

@@ -13,8 +13,8 @@ block main-content
                     th Date
                     th Created By
                     th Comments
-                    th Rated
-                    th VideoUrls
+                    th Rating
+                    th VideoUrl
                 tr
                     td #{event.title}
                     td.truncate #{event.description}
@@ -23,8 +23,10 @@ block main-content
                     td #{moment(event.date).format("MMM-DD-YYYY HH:mm:ss")}
                     td #{event.owner.firstName + ' ' + event.owner.lastName}
                     td #{event.comments}
-                    td #{event.joined ? 'Yes' : 'No'}
-                    td.truncate #{event.videoUrl}
+                    td #{event.rating}
+                    td
+                        a(href="#{event.videoUrl}") #{event.videoUrl}
+
 
 
 

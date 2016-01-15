@@ -30,10 +30,13 @@ block main-content
                  label.col-sm-2.control-label(for="youtubeUrl") Youtube
                  .col-sm-10
                    input.form-control(type="text" name="youtubeUrl" placeholder="#{user.youtubeUrl || 'Youtube url'}")
+              br
+              img(src="#{user.imageUrl}")
+              br
               .form-group
                 .col-sm-offset-2.col-sm-10
                     input(type="submit" value="Update Profile" class="btn btn-primary")
-                
+
     .row
         .text-center
             h2 Own Playlists
@@ -54,6 +57,6 @@ block main-content
         .col-md-offset-2.col-md-8
             table.table.table-striped.table-bordered
                 ul
-                each event in JSON.parse(joinedEvents)
+                each event in JSON.parse(addedRights)
                     li
                         a(href="/events/#{event}") #{event}
