@@ -12,7 +12,6 @@ block main-content
                     th Type
                     th Created By
                     th Rating
-                    th Joined
                 each event in events
                     tr
                         td
@@ -21,12 +20,9 @@ block main-content
                         td #{moment(event.date).format("MMM-DD-YYYY HH:mm:ss")}
                         td #{ event.type}
                         td #{event.owner.firstName + ' ' + event.owner.lastName}
-                        td
-                            if (event.joined)
-                                a.update(href="/events/leave/#{event._id}") Non-Rated by you
-                            else
-                                a.update(href="/events/join/#{event._id}") Rated by you
-                        td #{event.joined ? 'Yes' : 'No'}
+                        script. var rating = Math.floor((Math.random() * 5) + 1);
+                        td #{event.rating}
+
 
 block page-scripts
     script(src="js/sendRequest.js")

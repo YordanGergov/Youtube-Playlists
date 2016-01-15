@@ -36,7 +36,9 @@ module.exports = {
 
         var newEventForm = req.body;
 
-        //['public', 'initiative-based', 'initiative-and-season-based']
+        newEventForm.rating = Math.floor((Math.random() * 5) + 1);
+
+        newEventForm.comments = [];
         if (newEventForm.type == 'public') {
             newEventForm.intiative = undefined;
             newEventForm.season = undefined;
@@ -54,7 +56,7 @@ module.exports = {
                 return res.status(403).send({ message: 'Error saving event!', err: err});
             }
             
-            res.redirect('/active-events');
+            res.redirect('/passed-events');
         });
     },
     getActive: function (req, res) {

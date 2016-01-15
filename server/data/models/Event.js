@@ -5,12 +5,15 @@ module.exports.init = function() {
     var eventSchema = mongoose.Schema({
         title: { type: String, require: '{PATH} is required'},
         description: { type: String, require: '{PATH} is required'},
-        videoUrl: { String: Array },
+        videoUrl: String,
+        comments: [{
+            comments: String
+        }],
         date: Date,
         type: String,
+        rating: Number,
         category: String,
         season: String,
-        comments: [String],
         owner : {
             type: mongoose.Schema.Types.ObjectId,
             ref: 'User'
