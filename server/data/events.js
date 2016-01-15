@@ -1,5 +1,9 @@
 var Event = require('mongoose').model('Event');
 
+var cache = {
+    expires: new Date() + 10,
+    data: undefined
+};
 module.exports = {
     create: function(event, callback) {
         Event.create(event, callback);

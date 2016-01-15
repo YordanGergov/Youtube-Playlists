@@ -65,7 +65,7 @@ module.exports = {
         events.find({date: { $gt: today }}, {'date' : 'desc'}, function (err, events) {
             events.forEach(function (event) {
                 event.joined = false;
-                if (req.user.joinedEvents.indexOf(event._id) >= 0)
+                if (req.user.addedRights.indexOf(event._id) >= 0)
                     event.joined = true;
             });
             res.render(CONTROLLER_NAME + '/active-events', {events: events, moment: moment});
@@ -77,7 +77,7 @@ module.exports = {
         events.find({date: { $lt: today }}, {'date' : 'desc'}, function (err, events) {
             events.forEach(function (event) {
                 event.joined = false;
-                if (req.user.joinedEvents.indexOf(event._id) >= 0)
+                if (req.user.addedRights.indexOf(event._id) >= 0)
                     event.joined = true;
             });
             res.render(CONTROLLER_NAME + '/passed-events', {events: events, moment: moment});
@@ -91,7 +91,7 @@ module.exports = {
             }
 
             event.joined = false;
-            if (req.user.joinedEvents.indexOf(event._id) >= 0)
+            if (req.user.addedRights.indexOf(event._id) >= 0)
                 event.joined = true;
     
             res.render(CONTROLLER_NAME + '/event-detail', {event: event, moment: moment});         
@@ -111,7 +111,7 @@ module.exports = {
                 return res.status(400).send({ message: 'You already rated this playlist!'});
             }
             
-            if (req.user.joinedEvents.indexOf(event._id) >= 0) {
+            if (req.user.addedRights.indexOf(event._id) >= 0) {
                 req.session.error = 'You already rated this playlist!';
                 return res.status(400).send({ message: 'You already rated this playlist!'});
             }
@@ -127,8 +127,8 @@ module.exports = {
                 return res.status(400).send({ message: 'You are not part of this initiative and season!'});
             }
             
-            req.user.joinedEvents.push(event._id);
-            users.update(req.user, {joinedEvents: req.user.joinedEvents}, function (err) {
+            req.user.addedRights.push(event._id);
+            users.update(req.user, {addedRights: req.user.addedRights}, function (err) {
                 if (err) throw err;
                 res.send('Playlist rated!');
             });            
@@ -148,13 +148,13 @@ module.exports = {
                 return res.status(400).send({ message: 'You cannot leave your own event!'});
             }
             
-            if (req.user.joinedEvents.indexOf(event._id) < 0) {
+            if (req.user.addedRights.indexOf(event._id) < 0) {
                 req.session.error = 'You are not part of this event!';
                 return res.status(400).send({ message: 'You are not part of this event!'});
             }    
             
-            req.user.joinedEvents.remove(event._id);
-            users.update(req.user, {joinedEvents: req.user.joinedEvents}, function (err) {
+            req.user.addedRights.remove(event._id);
+            users.update(req.user, {addedRights: req.user.addedRights}, function (err) {
                 if (err) throw err;
                 res.send('Event left!');    
             });            

@@ -18,7 +18,7 @@ module.exports.init = function() {
         rating: Number,
         salt: String,
         hashPass: String,
-        joinedEvents: [ 
+        addedRights: [
             { type: mongoose.Schema.Types.ObjectId, ref: 'User' }
         ]
     });

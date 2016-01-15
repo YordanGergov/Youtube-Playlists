@@ -46,7 +46,7 @@ module.exports = {
       //  })
         
         newUserData.initiatives = userInitiatives;
-        newUserData.joinedEvents = [];
+        newUserData.addedRights = [];
         newUserData.rating = Math.floor((Math.random() * 5) + 1);
         
         console.log(userInitiatives)
@@ -95,12 +95,12 @@ module.exports = {
             
             users.findOne({_id: req.user._id}, function (err, user) {
                 
-                var joinedEvents = user.joinedEvents;
+                var addedRights = user.addedRights;
 
                 res.render(CONTROLLER_NAME + '/profile', {
                     user: req.user,
                     ownEvents: ownEvents,
-                    joinedEvents: JSON.stringify(joinedEvents),
+                    addedRights: JSON.stringify(addedRights),
                     moment: moment
                 });
             });

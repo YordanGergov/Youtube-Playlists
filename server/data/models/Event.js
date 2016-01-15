@@ -13,7 +13,9 @@ module.exports.init = function() {
         type: String,
         rating: Number,
         category: String,
-        season: String,
+        usersWithRights: [{
+            usersWithRights: String
+        }],
         owner : {
             type: mongoose.Schema.Types.ObjectId,
             ref: 'User'
